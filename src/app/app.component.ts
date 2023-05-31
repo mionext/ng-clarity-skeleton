@@ -1,21 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AppStateQuery } from './state/app.query';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  template: `<app-layout />`,
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
+  appState = inject(AppStateQuery);
   title = 'ng-clarity-skeleton';
-  c$: Observable<boolean> = this.appStateQuery.select('collapsed');
-  constructor(protected appStateQuery: AppStateQuery) {}
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.appStateQuery.update({
-        collapsed: !this.appStateQuery.sidebarCollapsed,
-      });
-    }, 1000);
+    setTimeout(() => {
+      this.appState.update({ collapsed: !this.appState.sidebarCollapsed });
+    }, 2500);
   }
 }
