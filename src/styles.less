@@ -9,9 +9,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-button:focus {
+button:focus,
+.datagrid-cell:focus {
   outline: none;
-  border: 0;
+  border: 0 !important;
 }
 
 .loading {
@@ -22,11 +23,25 @@ button:focus {
   align-items: center;
 }
 
-.clr-vertical-nav {
-  padding-top: 0;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+.sidebar-loading {
+  // background-color: aqua;
+  display: block;
+  margin: 0 auto;
+  margin-top: 18rem;
 }
 
-.alerts-pager {
-  float: right;
+.clr-vertical-nav {
+  padding-top: 0.35rem;
+}
+
+.clr-vertical-nav.is-collapsed {
+  width: 2.8rem !important;
+}
+
+.main-container:not([class*=open-overflow-menu]):not([class*=open-hamburger-menu]) .clr-vertical-nav.is-collapsed .nav-trigger {
+  margin-right: 0.5rem !important;
+}
+
+.branding {
+  padding: 0 0.3rem !important;
 }
