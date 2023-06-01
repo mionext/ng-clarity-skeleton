@@ -1,0 +1,33 @@
+<a
+  clrVerticalNavLink
+  routerLinkActive="active"
+  [routerLink]="menu.path"
+  *ngIf="!menu.children"
+>
+  <cds-icon [attr.shape]="menu.icon" clrVerticalNavIcon></cds-icon>
+  {{ menu.name }}
+</a>
+<clr-vertical-nav-group routerLinkActive="active" *ngIf="menu.children?.length">
+  <a [routerLink]="menu.path" hidden aria-hidden="true">ANG</a>
+  <cds-icon [attr.shape]="menu.icon" clrVerticalNavIcon></cds-icon>
+  {{ menu.name }}
+  <clr-vertical-nav-group-children *ngFor="let sub of menu.children">
+    <a
+      clrVerticalNavLink
+      routerLinkActive="active"
+      [routerLink]="sub.path"
+      [target]="sub.target == 'blank' ? '_balnk' : '_self'"
+      *ngIf="!sub.children?.length"
+    >
+      <cds-icon [attr.shape]="sub.icon" clrVerticalNavIcon></cds-icon>
+      {{ sub.name }}
+      <cds-icon
+        *ngIf="sub.target"
+        shape="pop-out"
+        size="sm"
+        style="width: 8px !important; height: 8px !important"
+      ></cds-icon>
+    </a>
+    <app-menu *ngIf="sub.children?.length" [menu]="sub" class="sub-group" />
+  </clr-vertical-nav-group-children>
+</clr-vertical-nav-group>

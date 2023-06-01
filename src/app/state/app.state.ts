@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store, StoreConfig } from '@datorama/akita';
+import { EntityStore, Store, StoreConfig } from '@datorama/akita';
 
 export interface AppStateStruct {
   collapsed: boolean;
@@ -13,7 +13,7 @@ function createInitialState(): AppStateStruct {
 
 @Injectable({ providedIn: 'root' })
 @StoreConfig({ name: 'app' })
-export class AppStore extends Store<AppStateStruct> {
+export class AppStore extends EntityStore<AppStateStruct> {
   constructor() {
     super(createInitialState());
   }

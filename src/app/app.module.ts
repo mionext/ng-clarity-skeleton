@@ -22,9 +22,10 @@ import {
   loadTextEditIconSet,
   loadTravelIconSet,
 } from '@cds/core/icon';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { AlertComponent } from './layout/alert/alert.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MenuComponent } from './layout/menu/menu.component';
 
 {
   // Icons
@@ -46,7 +47,13 @@ if (environment.production) {
 }
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, HeaderComponent, AlertComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    AlertComponent,
+    HomeComponent,
+    MenuComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

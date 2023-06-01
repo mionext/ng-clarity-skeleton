@@ -5,9 +5,15 @@
     <clr-vertical-nav
       [clrVerticalNavCollapsible]="true"
       [clrVerticalNavCollapsed]="appState.sidebarCollapsed"
-      class="nav-trigger--bottom"
+      class="nav-trigger--bottom sidebar-menu-container"
     >
-      <app-sidebar />
+      <app-menu *ngFor="let menu of authState.menus" [menu]="menu" />
+      <span
+        *ngIf="!authState.menus?.length"
+        class="spinner spinner-md sidebar-loading"
+      >
+        Loading...
+      </span>
     </clr-vertical-nav>
     <div class="content-area">
       <nav class="subnav">...</nav>
