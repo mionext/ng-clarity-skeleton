@@ -2,7 +2,7 @@ import { APP_INITIALIZER, NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClarityModule } from '@clr/angular';
-import { initializeApp } from './bootstrap/init';
+import { initializeApp } from '../bootstrap/init';
 
 import { enableAkitaProdMode } from '@datorama/akita';
 import { environment } from '../environments/environment';
@@ -22,10 +22,10 @@ import {
   loadTextEditIconSet,
   loadTravelIconSet,
 } from '@cds/core/icon';
-import { HeaderComponent } from './layout/header/header.component';
-import { AlertComponent } from './layout/alert/alert.component';
+
 import { HomeComponent } from './pages/home/home.component';
-import { MenuComponent } from './layout/menu/menu.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { VerticalComponent } from './components/nav/vertical/vertical.component';
 
 {
   // Icons
@@ -49,22 +49,21 @@ if (environment.production) {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    AlertComponent,
     HomeComponent,
-    MenuComponent,
+    VerticalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ClarityModule,
+    HttpClientModule,
   ],
   providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: () => initializeApp,
-      multi: true,
+      multi: true
     },
   ],
   bootstrap: [AppComponent],

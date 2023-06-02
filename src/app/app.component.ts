@@ -1,23 +1,21 @@
-import { Component, inject } from '@angular/core';
-import { AppStateQuery } from './state/app.query';
-import { Menu } from './types/menu';
+import {Component, inject, OnInit} from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { AuthStateQuery } from './modules/auth/state/auth.query';
+import {AppService} from "./services/app.service";
+import {AppStore} from "./stores/app.store";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  protected appState = inject(AppStateQuery);
-  protected authState = inject(AuthStateQuery);
-  menus: Observable<Menu[] | undefined> = this.authState.select('menus');
+export class AppComponent implements OnInit{
+  loading: Observable<boolean> = inject(AppService).selectLoading()
+  constructor(protected store: AppStore) {}
 
   ngOnInit(): void {
-    this.menus.subscribe((menus) => {
+    this.loading.subscribe(l => {
       setTimeout(() => {
-        this.authState.update({ permissions: menus?.map((menu) => menu.uuid) });
-      }, 100);
-    });
+        this.store.setLoading(!l)
+      }, 500)
+    })
   }
 }

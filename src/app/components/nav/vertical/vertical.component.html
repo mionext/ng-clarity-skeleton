@@ -28,6 +28,6 @@
         style="width: 8px !important; height: 8px !important"
       ></cds-icon>
     </a>
-    <app-menu *ngIf="sub.children?.length" [menu]="sub" class="sub-group" />
+    <nav-vertical *ngIf="sub.children?.length" [menu]="sub"/>
   </clr-vertical-nav-group-children>
 </clr-vertical-nav-group>

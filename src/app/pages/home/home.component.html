@@ -137,25 +137,27 @@
   </tbody>
 </table>
 
-<clr-datagrid style="width: 100%">
-  <clr-dg-placeholder>We couldn't find any items.</clr-dg-placeholder>
-  <clr-dg-column [clrDgSortBy]="'id'">User ID</clr-dg-column>
-  <clr-dg-column>
-    <ng-container *clrDgHideableColumn="{ hidden: false }"> Name </ng-container>
-  </clr-dg-column>
+<div style="width: 100%">
+  <clr-datagrid>
+    <clr-dg-placeholder>We couldn't find any items.</clr-dg-placeholder>
+    <clr-dg-column [clrDgSortBy]="'id'">User ID</clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }"> Name </ng-container>
+    </clr-dg-column>
 
-  <clr-dg-row *ngFor="let user of []">
-    <clr-dg-cell>{{ user }}</clr-dg-cell>
-    <clr-dg-cell>{{ user }}</clr-dg-cell>
-  </clr-dg-row>
+    <clr-dg-row *ngFor="let user of []">
+      <clr-dg-cell>{{ user }}</clr-dg-cell>
+      <clr-dg-cell>{{ user }}</clr-dg-cell>
+    </clr-dg-row>
 
-  <clr-dg-footer>
-    <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="100">
-      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
+    <clr-dg-footer>
+      <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="100">
+        <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
         >Per page</clr-dg-page-size
-      >
-      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
-      {{ pagination.totalItems }} items
-    </clr-dg-pagination>
-  </clr-dg-footer>
-</clr-datagrid>
+        >
+        {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+        {{ pagination.totalItems }} items
+      </clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>
